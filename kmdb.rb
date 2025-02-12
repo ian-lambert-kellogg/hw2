@@ -343,8 +343,6 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-#warner_bro = Studio.find_by({ "name" => "Warner Bros." })
-
 
 warner_bro_movies = Movie.where({ "studio_id" => warner_bro["id"] })
 # puts warner_bro_movies.inspect
@@ -359,20 +357,6 @@ end
 
 
 
-# apple_contacts = Contact.where({ "company_id" => apple["id"] })
-# puts apple_contacts.inspect
-
-# for contact in apple_contacts
-#     # read each contact row's first_name and last_name columns
-#     first_name = contact["first_name"]
-#     last_name = contact["last_name"]
-#     # display the first_name and last_name
-#     puts "#{first_name} #{last_name}"
-#   end
-
-  
-
-
 
 # Prints a header for the cast output
 puts ""
@@ -382,3 +366,23 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+# Need help understanding how to do this one....
+
+roles_table = Role.all
+actor_table = Actor.all
+
+movie_query = Movie.where({"id" => roles_table["movie_id"]}).where({roles_table["actor_id"] => actor_table["id"]})
+
+for movie_output in movie_query
+    movie_title = movie_output["title"]
+    actor_name = movie_output["name"]
+    role_character = movie_output["character_name"]
+    
+    puts "#{movie_title} #{actor_name} #{role_character}"
+end 
+
+
+
+
+
