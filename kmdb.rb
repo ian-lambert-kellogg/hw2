@@ -94,22 +94,42 @@ Role.destroy_all
 puts "Studios: #{Studio.all.count}"
 
 new_studio = Studio.new
-new_studio["name"] = "Warner Bros"
+new_studio["name"] = "Warner Bros."
 new_studio.save
 
 puts new_studio.inspect
 puts "Studios: #{Studio.all.count}"
 # ==================================================================
+
+warner_bro = Studio.find_by({ "name" => "Warner Bros." })
+
 puts "Movies: #{Movie.all.count}"
 
 new_movie = Movie.new
-new_movie["title"] = "Warner Bros"
-new_movie["year_released"] = "Warner Bros"
-new_movie["rated"] = "Warner Bros"
-new_movie["studio_id"] = "Warner Bros"
-#new_movie.save
+new_movie["title"] = "Batman Begins"
+new_movie["year_released"] = 2005
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = warner_bro["id"]
+new_movie.save
 
-puts new_studio.inspect
+new_movie1 = Movie.new
+new_movie1["title"] = "The Dark Knight"
+new_movie1["year_released"] = 2008
+new_movie1["rated"] = "PG-13"
+new_movie1["studio_id"] = warner_bro["id"]
+new_movie1.save
+
+new_movie2 = Movie.new
+new_movie2["title"] = "The Dark Knight Rises"
+new_movie2["year_released"] = 2012
+new_movie2["rated"] = "PG-13"
+new_movie2["studio_id"] = warner_bro["id"]
+new_movie2.save
+
+puts new_movie.inspect
+puts new_movie1.inspect
+puts new_movie2.inspect
+
 puts "Movies: #{Movie.all.count}"
 
 # Prints a header for the movies output
