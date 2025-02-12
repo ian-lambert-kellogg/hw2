@@ -85,12 +85,32 @@ Role.destroy_all
 
 # Generate models and tables, according to the domain model.
 # TODO!
-
-studios = 
+# Did this in the terminal using 'rails generate model _______' and 'db:migrate'
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+puts "Studios: #{Studio.all.count}"
+
+new_studio = Studio.new
+new_studio["name"] = "Warner Bros"
+new_studio.save
+
+puts new_studio.inspect
+puts "Studios: #{Studio.all.count}"
+# ==================================================================
+puts "Movies: #{Movie.all.count}"
+
+new_movie = Movie.new
+new_movie["title"] = "Warner Bros"
+new_movie["year_released"] = "Warner Bros"
+new_movie["rated"] = "Warner Bros"
+new_movie["studio_id"] = "Warner Bros"
+#new_movie.save
+
+puts new_studio.inspect
+puts "Movies: #{Movie.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
